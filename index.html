@@ -40,7 +40,7 @@
   </head>
   <body class="gradient-background">
     <div class="flex items-center justify-center min-h-screen">
-      <div class="flex flex-col items-center max-w-md mx-auto">
+      <div class="flex flex-col items-center max-w-xl mx-auto">
         <img
           id="imageDisplay"
           src="./images/image1.gif"
@@ -81,10 +81,15 @@
       const valentineQuestion = document.getElementById("valentineQuestion");
       const responseButtons = document.getElementById("responseButtons");
 
+      const initialCount = 0;
+      const initialButtonHeight = 48;
+      const initialButtonWidth = 80;
+      const initialFontSize = 20;
+
       let noClickCount = 0;
-      let buttonHeight = 48; // Starting height in pixels
-      let buttonWidth = 80;
-      let fontSize = 20; // Starting font size in pixels
+      let buttonHeight = initialButtonHeight; // Starting height in pixels
+      let buttonWidth = initialButtonWidth;
+      let fontSize = initialFontSize; // Starting font size in pixels
       const imagePaths = [
         "./images/image1.gif",
         "./images/image2.gif",
@@ -97,11 +102,11 @@
 
       noButton.addEventListener("click", function () {
         const contents = [
-          "Mình suy nghĩ lại đi mà 🥺",
-          "Mình nhấn lộn nút ròi ạ",
-          "Mình lại nhầm nữa ròi ạa",
-          "Nút màu xanh matcha đẹp hơn, mình nhấn thử xem ạ",
-          "Anh gõ mỏi tay quá ròi ạa 😭",
+          "Mình suy nghĩ lại đi mà 😭",
+          "Mình nhấn lộn nút ròi ạ 🥺",
+          "Mình lại nhầm nữa ròi ạa 😭",
+          "Nút màu matcha đẹp hơn ạ 🥺",
+          "Mình thiệt sự có suy nghĩ lại chưa ạ 😭",
         ];
         if (noClickCount < contents.length - 1) {
           noClickCount++;
@@ -115,6 +120,13 @@
           if (noClickCount < contents.length) {
             noButton.textContent = contents[noClickCount];
           }
+        }
+
+        if (noClickCount === contents.length - 1) {
+          noClickCount = initialCount;
+          buttonHeight = initialButtonHeight; // Starting height in pixels
+          buttonWidth = initialButtonWidth;
+          fontSize = initialFontSize; // Starting font size in pixels
         }
       });
 
